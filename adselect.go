@@ -53,3 +53,39 @@ func GetChatAd(apiId string, apiKey string, userID string, conversationID string
 
 	return GenerateAd(&ad, adType, jsFunc)
 }
+
+func GetPageAd(apiId string, apiKey string, pageContent string, adType string, jsFunc string) (string, error) {
+	var reqType string
+	switch adType {
+	case AdTypeJsonText, AdTypeHtmlText, AdTypeJavaScriptText:
+		reqType = AdTypeText
+	case AdTypeJsonImage, AdTypeHtmlImage, AdTypeJavaScriptImage:
+		reqType = AdTypeImage
+	default:
+		return "", fmt.Errorf("unsupported adType: %s", adType)
+	}
+
+	payload := GetPageAdRequest{
+		ApiID:        apiId,
+		ApiKey:       apiKey,
+		Type:         reqType,
+		PageContents: pageContent,
+	}
+
+	data, err := PostAPIRequest("/pageAd", payload)
+	if err != nil {
+		return "", fmt.Errorf("API request failed: %w", err)
+	}
+
+	adBytes, err := json.Marshal(data)
+	if err != nil {
+		return "", fmt.Errorf("failed to marshal ad data: %w", err)
+	}
+
+	var ad Ad
+	if err := json.Unmarshal(adBytes, &ad); err != nil {
+		return "", fmt.Errorf("failed to unmarshal ad: %w", err)
+	}
+
+	return GenerateAd(&ad, adType, jsFunc)
+}
