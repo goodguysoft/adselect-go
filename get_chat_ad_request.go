@@ -1,4 +1,4 @@
-package adselect
+package _go
 
 type GetChatAdRequest struct {
 	ApiID          string `json:"apiId"`

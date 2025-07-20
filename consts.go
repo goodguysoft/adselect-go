@@ -1,4 +1,4 @@
-package adselect
+package _go
 
 const APIBaseURL = "http://147.93.43.199"
 

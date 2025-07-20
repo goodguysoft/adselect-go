@@ -1,4 +1,4 @@
-package adselect
+package _go
 
 type ServiceResult struct {
 	Success bool        `json:"Success"`

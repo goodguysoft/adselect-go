@@ -1,4 +1,4 @@
-package adselect
+package _go
 
 import (
 	"bytes"
