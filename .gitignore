@@ -30,3 +30,6 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+/adselect/adselect_test.go
+# Editor/IDE
+.idea/

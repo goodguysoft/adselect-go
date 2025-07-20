@@ -1,0 +1,12 @@
+package adselect
+
+const APIBaseURL = "http://147.93.43.199"
+
+const (
+	AdTypeJsonText        = "JsonText"
+	AdTypeJsonImage       = "JsonImage"
+	AdTypeHtmlText        = "HtmlTextAd"
+	AdTypeHtmlImage       = "HtmlImageAd"
+	AdTypeJavaScriptText  = "AdTypeJavaScriptText"
+	AdTypeJavaScriptImage = "AdTypeJavaScriptImage"
+)
