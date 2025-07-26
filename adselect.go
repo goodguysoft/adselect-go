@@ -24,6 +24,12 @@ func GetChatAd(apiId string, apiKey string, userID string, conversationID string
 		reqType = AdTypeText
 	case AdTypeJsonImage, AdTypeHtmlImage, AdTypeJavaScriptImage:
 		reqType = AdTypeImage
+	case AdTypeBannerMediumRectJson, AdTypeBannerMediumRectHtml:
+		reqType = AdTypeBannerMediumRect
+	case AdTypeBannerLeaderboardJson, AdTypeBannerLeaderboardHtml:
+		reqType = AdTypeBannerLeaderboard
+	case AdTypeBannerWideSkyJson, AdTypeBannerWideSkyHtml:
+		reqType = AdTypeBannerWideSky
 	default:
 		return "", fmt.Errorf("unsupported adType: %s", adType)
 	}
@@ -61,6 +67,12 @@ func GetPageAd(apiId string, apiKey string, pageContent string, adType string, j
 		reqType = AdTypeText
 	case AdTypeJsonImage, AdTypeHtmlImage, AdTypeJavaScriptImage:
 		reqType = AdTypeImage
+	case AdTypeBannerMediumRectJson, AdTypeBannerMediumRectHtml:
+		reqType = AdTypeBannerMediumRect
+	case AdTypeBannerLeaderboardJson, AdTypeBannerLeaderboardHtml:
+		reqType = AdTypeBannerLeaderboard
+	case AdTypeBannerWideSkyJson, AdTypeBannerWideSkyHtml:
+		reqType = AdTypeBannerWideSky
 	default:
 		return "", fmt.Errorf("unsupported adType: %s", adType)
 	}

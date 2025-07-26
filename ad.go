@@ -1,8 +1,11 @@
 package _go
 
 const (
-	AdTypeText  = "text"
-	AdTypeImage = "image"
+	AdTypeText              = "text"
+	AdTypeImage             = "image"
+	AdTypeBannerMediumRect  = "Medium Rectangle Banner"
+	AdTypeBannerLeaderboard = "Leaderboard Banner"
+	AdTypeBannerWideSky     = "Wide Skyscraper Banner"
 )
 
 // Ad represents an advertisement with basic properties.

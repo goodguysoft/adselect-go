@@ -20,6 +20,10 @@ func GenerateAd(ad *Ad, adType string, jsFunc string) (string, error) {
 		return generateJavaScriptTextAd(ad, jsFunc)
 	case AdTypeJavaScriptImage:
 		return generateJavaScriptImageAd(ad, jsFunc)
+	case AdTypeBannerMediumRectJson, AdTypeBannerLeaderboardJson, AdTypeBannerWideSkyJson:
+		return generateJsonImageAd(ad)
+	case AdTypeBannerMediumRectHtml, AdTypeBannerLeaderboardHtml, AdTypeBannerWideSkyHtml:
+		return generateHtmlBannerAd(ad)
 	default:
 		return "", fmt.Errorf("unsupported ad type: %s", adType)
 	}
@@ -185,4 +189,14 @@ func generateJavaScriptImageAd(ad *Ad, jsFunc string) (string, error) {
 		return "", err
 	}
 	return fmt.Sprintf("%s(%s);", jsFunc, jsonStr), nil
+}
+
+func generateHtmlBannerAd(ad *Ad) (string, error) {
+	htmlStr := fmt.Sprintf(
+		`<a href="%s" target="_blank" rel="noopener noreferrer"><img src="%s" alt="%s" style="max-width:100%%;height:auto;display:block;"></a>`,
+		html.EscapeString(ad.URL),
+		html.EscapeString(ad.ImageURL),
+		html.EscapeString(ad.Title),
+	)
+	return htmlStr, nil
 }
